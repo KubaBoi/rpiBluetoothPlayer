@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <head>
-
 </head>
 <body>
-    <p>Ahoj</p>
+    <p id="title"></p>
+    <p id="artist"></p>
+    <p id="album"></p>
+
+    <script>
+        title = document.querySelector("#title");
+        artist = document.querySelector("#artist");
+        album = document.querySelector("#album");
+
+        setInterval(update, 1000);
+        function update() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    json = JSON.parse(this.responseText);
+                    title.innerHTML = json.title;
+                    artist.innerHTML = json.artist;
+                    album.innerHTML = json.album;
+                }
+            };
+            xhttp.open("GET", "/update", true);
+            xhttp.send();
+        }
+    </script>
 </body>
