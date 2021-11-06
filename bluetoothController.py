@@ -53,7 +53,7 @@ class BluetoothController:
                     self.data["Track"][key] = value.get(key, '')
                     print('   {}: {}'.format(key, value.get(key, '')))
 
-        with open("data.json", "w", encoding="utf-8") as f:
+        with open("data.json", "w") as f:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
