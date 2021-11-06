@@ -92,7 +92,7 @@ class BluetoothController:
         BT_Media_iface = dbus.Interface(player, dbus_interface='org.bluez.MediaPlayer1')
         BT_Media_props = dbus.Interface(player, "org.freedesktop.DBus.Properties")
 
-        props = BT_Media_iface.GetAll("org.bluez.MediaPlayer1") 
+        props = player.GetAll("org.bluez.MediaPlayer1") 
         return props
 
     def play(self):
