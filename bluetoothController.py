@@ -63,16 +63,16 @@ class BluetoothController:
     def on_playback_control(self, fd, condition):
         if os.path.exists("status.txt"):
             with open("status.txt", "r") as f:
-                data = f.read()
+                data = f.read()[0]
                 print(data)
-                if (data == 1):
+                if (data == "1"):
                     self.player_iface.Play()
-                elif (data == 0):
+                elif (data == "0"):
                     print("PAUSE")
                     self.player_iface.Pause()
-                elif (data == 3):
+                elif (data == "3"):
                     self.player_iface.Next()
-                elif (data == 2):
+                elif (data == "2"):
                     self.player_iface.Previous()
                 elif (data == "5"):
                     vol = int(str.split()[1])
