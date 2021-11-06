@@ -14,7 +14,7 @@ class Window(QMainWindow):
         #---------------------adding browser-------------------
         self.browser = QWebEngineView()
         #setting url for browser, you can use any other url also
-        self.browser.setUrl(QUrl('http://localhost:8000/ahoj.html'))
+        self.browser.setUrl(QUrl('http://192.168.0.102:8000/ahoj.html'))
         #to display google search engine on our browser
         self.setCentralWidget(self.browser)
         #-------------------full screen mode------------------
