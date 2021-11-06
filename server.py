@@ -1,13 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
-import os.path
-from os import path, listdir
-import pathlib
-import datetime
+from os import path
 import json
-import threading
-
-from bluetoothController import BluetoothController
 
 hostName = "localhost"
 hostPort = 8000
@@ -49,21 +43,14 @@ class Server(BaseHTTPRequestHandler):
             self.wfile.write(f.read())
 
 
-import webbrowser
+if __name__ == "__main__":
+    myServer = HTTPServer((hostName, hostPort), Server)
+    print(time.asctime(), "Server Starts - %s:%s" % (hostName, hostPort))
 
-webbrowser.open("http://localhost:8000")
+    try:
+        myServer.serve_forever()
+    except KeyboardInterrupt:
+        pass
 
-myServer = HTTPServer((hostName, hostPort), Server)
-print(time.asctime(), "Server Starts - %s:%s" % (hostName, hostPort))
-
-try:
-    bController = BluetoothController()
-    thread = threading.Thread(target=bController.serveForever, args=())
-    thread.start()
-
-    myServer.serve_forever()
-except KeyboardInterrupt:
-    pass
-
-myServer.server_close()
-print(time.asctime(), "Server Stops - %s:%s" % (hostName, hostPort))
+    myServer.server_close()
+    print(time.asctime(), "Server Stops - %s:%s" % (hostName, hostPort))
