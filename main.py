@@ -15,7 +15,7 @@ server = HTTPServer(("localhost", 8000), Server)
 thread2 = threading.Thread(target=server.serve_forever, args=())
 thread2.start()
 
-import pyautogui
+"""import pyautogui
 webbrowser.open("http://localhost:8000")
 time.sleep(10)
 pyautogui.press("F11")
@@ -33,4 +33,4 @@ while True:
             elif (data == "3"):
                 bController.next()
 
-        os.remove("status.txt")
+        os.remove("status.txt")"""
