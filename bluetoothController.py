@@ -61,10 +61,10 @@ class BluetoothController:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
-        print("a")
         if os.path.exists("status.txt"):
             with open("status.txt", "r") as f:
                 data = f.read()
+                print(data)
                 if (data == "1"):
                     self.player_iface.Play()
                 elif (data == "0"):
@@ -73,7 +73,7 @@ class BluetoothController:
                     self.player_iface.Next()
                 elif (data == "2"):
                     self.player_iface.Previous()
-                elif str.startswith("vol"):
+                elif (data == "5"):
                     vol = int(str.split()[1])
                     if vol not in range(0, 128):
                         print("Possible Values: 0-127")
