@@ -13,7 +13,8 @@ def on_property_changed(interface, changed, invalidated):
                 print('   {}: {}'.format(key, value.get(key, '')))
 
 def on_playback_control(fd, condition):
-    str = fd.readline()
+    print("A")
+    str = "a" #fd.readline()
     if str.startswith('play'):
         player_iface.Play()
     elif str.startswith('pause'):
