@@ -1,10 +1,9 @@
 body {
     font-family: verdana;
-    background-color: chocolate;
+    animation: backgroundColor 20s linear infinite;
 }
 
 #main {
-    background-color: chartreuse;
     width: 300px;
     height: 360px;
 }
@@ -51,6 +50,17 @@ button.play0 {
     height: 50px;
 }
 
+
+@keyframes backgroundColor {
+    0% {background-color: #9339bf;}
+    10% {background-color: #5139bd;}
+    20% {background-color: #394fbd;}
+    30% {background-color: #bd3939;}
+    40% {background-color: #bd395c;}
+    50% {background-color: #bd3982;}
+    60% {background-color: #bd39a3;}
+    100% {background-color: #9339bf;}
+}
 
 @keyframes buttonClick {
     0% {
