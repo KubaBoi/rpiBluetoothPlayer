@@ -2,9 +2,9 @@ body {
     font-family: verdana;
     /*animation: backgroundColor 20s linear infinite;*/
     text-align: center;
-    background: linear-gradient(152deg, #de2551, #6625de);
+    background: linear-gradient(178deg, #de2551, #6625de);
     background-size: 400% 400%;
-    animation: backgroundGradient 7s ease infinite;
+    animation: backgroundGradient 5s ease infinite;
 }
 
 #main {
