@@ -49,7 +49,9 @@ class Server(BaseHTTPRequestHandler):
             self.wfile.write(f.read())
 
 
+import webbrowser
 
+webbrowser.open("http://localhost:8000")
 
 myServer = HTTPServer((hostName, hostPort), Server)
 print(time.asctime(), "Server Starts - %s:%s" % (hostName, hostPort))
