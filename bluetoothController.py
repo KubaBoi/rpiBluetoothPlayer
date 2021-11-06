@@ -24,9 +24,9 @@ class BluetoothController:
                             bus.get_object("org.bluez", path),
                             "org.freedesktop.DBus.Properties")
             if not self.player_iface:
-                sys.exit("Error: Media Player not found.")
+                print("Error: Media Player not found.")
             if not self.transport_prop_iface:
-                sys.exit("Error: DBus.Properties iface not found.")
+                print("Error: DBus.Properties iface not found.")
 
         bus.add_signal_receiver(
                 self.on_property_changed,
