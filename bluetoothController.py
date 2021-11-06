@@ -4,6 +4,8 @@ from gi.repository import GLib
 class BluetoothController:
 
     def __init__(self):
+        self.data = {}
+
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
         bus = dbus.SystemBus()
         obj = bus.get_object('org.bluez', "/")
@@ -37,10 +39,15 @@ class BluetoothController:
     def on_property_changed(self, interface, changed, invalidated):
         if interface != 'org.bluez.MediaPlayer1':
             return
+        print(changed.items())
         for prop, value in changed.items():
+            
             if prop == 'Status':
+                self.data["status"] = value
                 print('Playback Status: {}'.format(value))
+
             elif prop == 'Track':
+                self.data["track"] = value
                 print('Music Info:')
                 for key in ('Title', 'Artist', 'Album'):
                     print('   {}: {}'.format(key, value.get(key, '')))

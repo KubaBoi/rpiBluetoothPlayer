@@ -1,29 +1,39 @@
 #640 480
 
 import pygame
+from pygame.locals import*
 import threading
-from bluetoothController import BluetoothController
+
+from gui import GUI
+
+debug = False
+
+if (not debug):
+    from bluetoothController import BluetoothController
 
 pygame.init()
 
-#full screen
-#screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-
 width = 480
 height = 640
-screen = pygame.display.set_mode((width, height))
+if (not debug):
+    #full screen
+    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+else:
+    screen = pygame.display.set_mode((width, height))
 
 color = (255, 255, 255)
 screen.fill((color))
 
 running = True
 
-bController = BluetoothController()
-thread = threading.Thread(target=bController.serveForever, args=())
-thread.start()
+if (not debug):
+    bController = BluetoothController()
+    thread = threading.Thread(target=bController.serveForever, args=())
+    thread.start()
+
+gui = GUI(screen)
 
 while running:
-
 
     pygame.display.flip()
     
@@ -31,6 +41,5 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    bController.pause()
 
 pygame.quit()
