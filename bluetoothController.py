@@ -58,7 +58,8 @@ class BluetoothController:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
-        print(json.loads(self.player_iface.Track))
+        print(self.getData())
+
         if os.path.exists("status.txt"):
             with open("status.txt", "r") as f:
                 data = f.read()[0]
@@ -83,6 +84,16 @@ class BluetoothController:
                             dbus.UInt16(vol))
             os.remove("status.txt")
         return True
+
+    def getData(self):
+        bus = dbus.SystemBus()
+
+        player = bus.get_object('org.bluez','/org/bluez/hci0/dev_78_6A_89_FA_1C_95/player0')
+        BT_Media_iface = dbus.Interface(player, dbus_interface='org.bluez.MediaPlayer1')
+        BT_Media_props = dbus.Interface(player, "org.freedesktop.DBus.Properties")
+
+        props = BT_Media_props.GetAll("org.bluez.MediaPlayer1") 
+        return props
 
     def play(self):
         self.player_iface.Play()
