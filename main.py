@@ -21,6 +21,8 @@ if (not debug):
 else:
     screen = pygame.display.set_mode((width, height))
 
+
+screen = pygame.display.set_mode((width, height))
 color = (255, 255, 255)
 screen.fill((color))
 
