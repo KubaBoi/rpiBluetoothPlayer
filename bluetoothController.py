@@ -60,6 +60,7 @@ class BluetoothController:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
+        print("a")
         str = fd.readline()
         if str.startswith("play"):
             self.player_iface.Play()
