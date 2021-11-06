@@ -52,9 +52,6 @@ class BluetoothController:
                 self.data["Track"] = {}
                 for key in ("Title", "Artist", "Album"):
                     val = value.get(key, "")
-                    if (key != "Title" and len(val) > 24):
-                        val = val[0:24] + "\n" + val[24:]
-
                     self.data["Track"][key] = val
                     print(f"{key}: {val}")
 
