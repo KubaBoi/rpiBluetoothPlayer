@@ -10,6 +10,8 @@ class Server(BaseHTTPRequestHandler):
     def do_GET(self):
         if (self.path == "/"):
             self.sendFile("index.html")
+        if (self.path == "/sheet.css"):
+            self.sendFile("sheet.css", "text/css")
 
         elif (self.path == "/update"):
             self.update()
@@ -20,7 +22,7 @@ class Server(BaseHTTPRequestHandler):
             post_body = self.rfile.read(content_len)
             self.sendMessage(post_body)
 
-    def sendFile(self, file):
+    def sendFile(self, file, header = "text/html"):
         if (not path.exists(file)):
             self.send_response(404)
             self.send_header("Content-type", "text/html")
@@ -28,7 +30,7 @@ class Server(BaseHTTPRequestHandler):
             return
 
         self.send_response(200)
-        self.send_header("Content-type", "text/html")
+        self.send_header("Content-type", header)
         self.end_headers()
 
         with open(file, "rb") as f:
