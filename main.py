@@ -10,7 +10,7 @@ thread = threading.Thread(target=bController.serveForever, args=())
 thread.start()
 
 server = HTTPServer(("localhost", 8000), Server)
-thread2 = threading.Thread(target=server.serveForever, args=())
+thread2 = threading.Thread(target=server.serve_forever, args=())
 thread2.start()
 
 
