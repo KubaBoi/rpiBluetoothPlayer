@@ -48,6 +48,7 @@ class BluetoothController:
 
             elif prop == 'Track':
                 print('Music Info:')
+                self.data["Track"] = {}
                 for key in ('Title', 'Artist', 'Album'):
                     self.data["Track"][key] = value.get(key, '')
                     print('   {}: {}'.format(key, value.get(key, '')))
