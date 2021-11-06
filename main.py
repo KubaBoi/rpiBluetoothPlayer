@@ -41,6 +41,7 @@ gui = GUI(screen, bController)
 
 while running:
 
+    gui.clear()
     gui.drawMainButton()
     gui.drawData()
     pygame.display.flip()

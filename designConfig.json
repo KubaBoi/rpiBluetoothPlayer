@@ -1,0 +1,10 @@
+{
+    "background": [255, 0, 255],
+    "fontName": "Arial",
+    "titleColor": [0, 0, 0],
+    "artistColor": [0, 0, 0],
+    "albumColor": [0, 0, 0],
+    "mainButtonColor": [0, 0, 255],
+    "nextButtonColor": [0, 0, 255],
+    "prevButtonColor": [0, 0, 255]
+}
