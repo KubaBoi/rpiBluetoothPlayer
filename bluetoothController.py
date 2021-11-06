@@ -13,19 +13,20 @@ class BluetoothController:
         mgr = dbus.Interface(obj, "org.freedesktop.DBus.ObjectManager")
         self.player_iface = None
         self.transport_prop_iface = None
-        for path, ifaces in mgr.GetManagedObjects().items():
-            if "org.bluez.MediaPlayer1" in ifaces:
-                self.player_iface = dbus.Interface(
-                        bus.get_object("org.bluez", path),
-                        "org.bluez.MediaPlayer1")
-            elif "org.bluez.MediaTransport1" in ifaces:
-                self.transport_prop_iface = dbus.Interface(
-                        bus.get_object("org.bluez", path),
-                        "org.freedesktop.DBus.Properties")
-        if not self.player_iface:
-            sys.exit("Error: Media Player not found.")
-        if not self.transport_prop_iface:
-            sys.exit("Error: DBus.Properties iface not found.")
+        while (not self.player_iface or not self.transport_prop_iface):
+            for path, ifaces in mgr.GetManagedObjects().items():
+                if "org.bluez.MediaPlayer1" in ifaces:
+                    self.player_iface = dbus.Interface(
+                            bus.get_object("org.bluez", path),
+                            "org.bluez.MediaPlayer1")
+                elif "org.bluez.MediaTransport1" in ifaces:
+                    self.transport_prop_iface = dbus.Interface(
+                            bus.get_object("org.bluez", path),
+                            "org.freedesktop.DBus.Properties")
+            if not self.player_iface:
+                sys.exit("Error: Media Player not found.")
+            if not self.transport_prop_iface:
+                sys.exit("Error: DBus.Properties iface not found.")
 
         bus.add_signal_receiver(
                 self.on_property_changed,

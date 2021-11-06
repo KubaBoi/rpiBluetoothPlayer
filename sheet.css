@@ -3,7 +3,7 @@ body {
     /*animation: backgroundColor 20s linear infinite;*/
     text-align: center;
     
-    background: linear-gradient(172deg, #de2551, #6625de);
+    background: linear-gradient(179deg, #de2551, #6625de);
     background-size: 400% 400%;
 
     -webkit-animation: backgroundGradient 5s ease infinite;

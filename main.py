@@ -18,7 +18,7 @@ thread2.start()
 
 
 webbrowser.open("http://localhost:8000")
-time.sleep(1)
+time.sleep(10)
 pyautogui.press("F11")
 
 while True:
