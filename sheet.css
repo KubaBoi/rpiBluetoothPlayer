@@ -1,6 +1,6 @@
 body {
     font-family: verdana;
-    animation: pulsate 20s linear infinite;
+    animation: backgroundColor 20s linear infinite;
 }
 
 #main {
@@ -52,23 +52,9 @@ button.play0 {
 
 
 @keyframes backgroundColor {
-    0% {background-color: #9339bf;}
-    10% {background-color: #5139bd;}
-    20% {background-color: #394fbd;}
-    30% {background-color: #bd3939;}
-    40% {background-color: #bd395c;}
-    50% {background-color: #bd3982;}
-    60% {background-color: #bd39a3;}
-    100% {background-color: #9339bf;}
-}
-
-@keyframes pulsate {
-    0% {background: black}
-    20% {background: red}
-    40% {background: blue}
-    60% {background: orange}
-    80% {background: green}
-    100% {background: black}
+    0% {background-color: #bd39a3;}
+    50% {background-color: #8a39bd;}
+    100% {background-color: #bd39a3;}
 }
 
 @keyframes buttonClick {
