@@ -3,6 +3,7 @@ import threading
 import webbrowser
 import time
 import os
+import pyautogui
 
 from bluetoothController import BluetoothController
 from server import Server
@@ -17,6 +18,8 @@ thread2.start()
 
 
 webbrowser.open("http://localhost:8000")
+time.sleep(1)
+pyautogui.press("F11")
 
 while True:
     if os.path.exists("status.txt"):
