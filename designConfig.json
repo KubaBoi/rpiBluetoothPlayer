@@ -4,7 +4,10 @@
     "titleColor": [0, 0, 0],
     "artistColor": [0, 0, 0],
     "albumColor": [0, 0, 0],
-    "mainButtonColor": [0, 0, 255],
+    "mainButtonColor1": [0, 0, 255],
+    "mainButtonColor2": [0, 255, 0],
     "nextButtonColor": [0, 0, 255],
-    "prevButtonColor": [0, 0, 255]
+    "prevButtonColor": [0, 0, 255],
+    "buttonCenter": [240, 200],
+    "buttonRadius": 100
 }

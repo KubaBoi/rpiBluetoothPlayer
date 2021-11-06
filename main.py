@@ -6,7 +6,7 @@ import threading
 
 from gui import GUI
 
-debug = False
+debug = True
 
 if (not debug):
     from bluetoothController import BluetoothController
@@ -41,9 +41,7 @@ gui = GUI(screen, bController)
 
 while running:
 
-    gui.clear()
-    gui.drawMainButton()
-    gui.drawData()
+    gui.draw()
     pygame.display.flip()
     
     for event in pygame.event.get():
