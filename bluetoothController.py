@@ -42,19 +42,19 @@ class BluetoothController:
         if interface != "org.bluez.MediaPlayer1":
             return
         for prop, value in changed.items():
-            print(prop + 10*" a")
+            print(prop + ": " + value + " ---")
             
             if prop == "Status":
                 self.data["Status"] = value
-                print(f"Playback Status: {value}")
+                #print(f"Playback Status: {value}")
 
             elif prop == "Track":
-                print("Music Info:")
+                #print("Music Info:")
                 self.data["Track"] = {}
                 for key in ("Title", "Artist", "Album"):
                     val = value.get(key, "")
                     self.data["Track"][key] = val
-                    print(f"{key}: {val}")
+                    #print(f"{key}: {val}")
 
         with open("data.json", "w") as f:
             f.write(json.dumps(self.data))
