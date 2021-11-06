@@ -1,7 +1,7 @@
 #640 480
 
 import pygame
-from test import BluetoothController
+from bluetoothController import BluetoothController
 
 pygame.init()
 
@@ -27,5 +27,6 @@ while running:
             running = False
 
     bController = BluetoothController()
+    b.controller.
 
 pygame.quit()
