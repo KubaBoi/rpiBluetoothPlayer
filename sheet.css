@@ -2,8 +2,12 @@ body {
     font-family: verdana;
     /*animation: backgroundColor 20s linear infinite;*/
     text-align: center;
-    background: linear-gradient(178deg, #de2551, #6625de);
+    
+    background: linear-gradient(172deg, #de2551, #6625de);
     background-size: 400% 400%;
+
+    -webkit-animation: backgroundGradient 5s ease infinite;
+    -moz-animation: backgroundGradient 5s ease infinite;
     animation: backgroundGradient 5s ease infinite;
 }
 
@@ -35,10 +39,6 @@ button:active {
     height: 50px;
 }
 
-#play {
-
-}
-
 button.play1 {
     background-color: blueviolet;
     width: 100px;
@@ -58,10 +58,20 @@ button.play0 {
 }
 
 
+@-webkit-keyframes backgroundGradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes backgroundGradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
 @keyframes backgroundGradient {
-    0%{background-position:52% 0%}
-    50%{background-position:49% 100%}
-    100%{background-position:52% 0%}
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
 }
 
 @keyframes backgroundColor {
