@@ -43,13 +43,13 @@ class BluetoothController:
         for prop, value in changed.items():
             
             if prop == 'Status':
-                self.data["status"] = value
+                self.data["Status"] = value
                 print('Playback Status: {}'.format(value))
 
             elif prop == 'Track':
-                self.data["track"] = value
                 print('Music Info:')
                 for key in ('Title', 'Artist', 'Album'):
+                    self.data["Track"][key] = value.get(key, '')
                     print('   {}: {}'.format(key, value.get(key, '')))
 
     def on_playback_control(self, fd, condition):

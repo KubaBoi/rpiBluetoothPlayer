@@ -26,17 +26,23 @@ screen = pygame.display.set_mode((width, height))
 color = (255, 255, 255)
 screen.fill((color))
 
+pygame.font.init()
+
 running = True
 
 if (not debug):
     bController = BluetoothController()
     thread = threading.Thread(target=bController.serveForever, args=())
     thread.start()
+else:
+    bController = None
 
-gui = GUI(screen)
+gui = GUI(screen, bController)
 
 while running:
 
+    gui.drawMainButton()
+    gui.drawData()
     pygame.display.flip()
     
     for event in pygame.event.get():
