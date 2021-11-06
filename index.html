@@ -5,9 +5,9 @@
 <body>
     <div id="main">
         <div>
-            <button id="prev" onclick="prev()"></button>
+            <button id="prev" onclick="sendUpdate(2)"></button>
             <button id="play" onclick="play()"></button>
-            <button id="next" onclick="next()"></button>
+            <button id="next" onclick="sendUpdate(3)"></button>
         </div>
         <h1 id="title"></h1>
         <h3 id="artist"></h3>
@@ -15,20 +15,19 @@
     </div>
 
     <script>
+        playing = false;
+
         title = document.querySelector("#title");
         artist = document.querySelector("#artist");
         album = document.querySelector("#album");
 
-        function prev() {
-
-        }
-
         function play() {
-
-        }
-
-        function next() {
-
+            if (playing) {
+                sendUpdate(0)
+            }
+            else {
+                sendUpdate(1)
+            }
         }
 
         setInterval(update, 1000);
@@ -40,10 +39,24 @@
                     title.innerHTML = json.Track.Title;
                     artist.innerHTML = json.Track.Artist;
                     album.innerHTML = json.Track.Album;
+                    if (json.Status == "playing") {
+                        playing = true;
+                    } 
+                    else {
+                        playing = false;
+                    }
                 }
             };
             xhttp.open("GET", "/update", true);
             xhttp.send();
+        }
+
+        function sendUpdate(update) {
+            var xmlhttp = new XMLHttpRequest();  
+            var theUrl = "/sendUpdate";
+            xmlhttp.open("POST", theUrl);
+            xmlhttp.setRequestHeader("Content-Type", "application/text;charset=UTF-8");
+            xmlhttp.send(update);
         }
     </script>
 </body>

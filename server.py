@@ -17,10 +17,12 @@ class Server(BaseHTTPRequestHandler):
             self.update()
 
     def do_POST(self):
-        if (self.path == "/update"):
+        if (self.path == "/sendUpdate"):
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
-            self.sendMessage(post_body)
+            with open("status.txt", "bw") as f:
+                f.write(post_body) 
+            self.send_response(200)
 
     def sendFile(self, file, header = "text/html"):
         if (not path.exists(file)):
