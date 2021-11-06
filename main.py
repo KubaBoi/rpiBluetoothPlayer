@@ -5,22 +5,17 @@ import time
 import os
 
 from bluetoothController import BluetoothController
-from player import BluePlayer
 from server import Server
 
-#bController = BluetoothController()
-#thread = threading.Thread(target=bController.serveForever, args=())
-#thread.start()
-
-player = BluePlayer()
-player.start()
-player.pause()
+bController = BluetoothController()
+thread = threading.Thread(target=bController.serveForever, args=())
+thread.start()
 
 server = HTTPServer(("localhost", 8000), Server)
 thread2 = threading.Thread(target=server.serve_forever, args=())
 thread2.start()
 
-import pyautogui
+"""import pyautogui
 webbrowser.open("http://localhost:8000")
 time.sleep(10)
 pyautogui.press("F11")
@@ -30,14 +25,14 @@ while True:
         with open("status.txt", "r") as f:
             data = f.read()
             if (data == "0"):
-                player.pause()
+                bController.pause()
             elif (data == "1"):
-                player.play()
+                bController.play()
             elif (data == "2"):
-                player.prev()
+                bController.prev()
             elif (data == "3"):
-                player.next()
+                bController.next()
 
         os.remove("status.txt")
 
-    
+    """
