@@ -1,5 +1,5 @@
 body {
-    font-family: verdana;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /*animation: backgroundColor 20s linear infinite;*/
     text-align: center;
 }
@@ -15,9 +15,14 @@ body {
 
 #control {
     position: relative;
-    top: 5px;
+    top: 10px;
     margin: auto;
     text-align: center;
+}
+
+#titles {
+    position: relative;
+    top: 100px;
 }
 
 button {
@@ -53,28 +58,6 @@ button.play0 {
     height: 50px;
 }
 
-
-@-webkit-keyframes backgroundGradient {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@-moz-keyframes backgroundGradient {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@keyframes backgroundGradient {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-
-@keyframes backgroundColor {
-    0% {background-color: #bd39a3;}
-    50% {background-color: #8a39bd;}
-    100% {background-color: #bd39a3;}
-}
 
 @keyframes buttonClick {
     0% {
