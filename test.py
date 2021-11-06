@@ -44,7 +44,7 @@ class BluetoothController:
                     print('   {}: {}'.format(key, value.get(key, '')))
 
     def on_playback_control(self, fd, condition):
-        fd.readline()
+        str = fd.readline()
         if str.startswith('play'):
             self.player_iface.Play()
         elif str.startswith('pause'):
