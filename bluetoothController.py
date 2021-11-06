@@ -42,7 +42,7 @@ class BluetoothController:
     def on_property_changed(self, interface, changed, invalidated):
         if interface != "org.bluez.MediaPlayer1":
             return
-        print(interface.Track)
+        print(invalidated)
         for prop, value in changed.items():
             print(f"{prop}: {value}")
             
