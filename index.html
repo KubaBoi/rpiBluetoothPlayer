@@ -17,9 +17,9 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     json = JSON.parse(this.responseText);
-                    title.innerHTML = json.Title;
-                    artist.innerHTML = json.Artist;
-                    album.innerHTML = json.Album;
+                    title.innerHTML = json.Track.Title;
+                    artist.innerHTML = json.Track.Artist;
+                    album.innerHTML = json.Track.Album;
                 }
             };
             xhttp.open("GET", "/update", true);
