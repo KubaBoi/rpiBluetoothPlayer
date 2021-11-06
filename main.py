@@ -27,6 +27,6 @@ while running:
             running = False
 
     bController = BluetoothController()
-    b.controller.
+    bController.pause()
 
 pygame.quit()

@@ -63,3 +63,15 @@ class BluetoothController:
                     'Volume',
                     dbus.UInt16(vol))
         return True
+
+    def play(self):
+        self.player_iface.Play()
+
+    def pause(self):
+        self.player_iface.Pause()
+
+    def next(self):
+        self.player_iface.Next()
+
+    def prev(self):
+        self.player_iface.Previous()
