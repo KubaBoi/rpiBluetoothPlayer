@@ -1,5 +1,6 @@
 import dbus, dbus.mainloop.glib, sys
 from gi.repository import GLib
+import json
 
 class BluetoothController:
 
@@ -51,6 +52,9 @@ class BluetoothController:
                 for key in ('Title', 'Artist', 'Album'):
                     self.data["Track"][key] = value.get(key, '')
                     print('   {}: {}'.format(key, value.get(key, '')))
+
+        with open("data.json", "w", encoding="utf-8") as f:
+            f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
         str = fd.readline()
