@@ -1,6 +1,7 @@
 #640 480
 
 import pygame
+import threading
 from bluetoothController import BluetoothController
 
 pygame.init()
@@ -17,6 +18,9 @@ screen.fill((color))
 
 running = True
 
+bController = BluetoothController()
+thread = threading.Thread(target=bController.serveForever, args=())
+
 while running:
 
 
@@ -26,7 +30,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    bController = BluetoothController()
     bController.pause()
 
 pygame.quit()

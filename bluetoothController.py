@@ -30,6 +30,8 @@ class BluetoothController:
                 signal_name='PropertiesChanged',
                 dbus_interface='org.freedesktop.DBus.Properties')
         GLib.io_add_watch(sys.stdin, GLib.IO_IN, self.on_playback_control)
+
+    def serveForever(self):
         GLib.MainLoop().run()
 
     def on_property_changed(self, interface, changed, invalidated):
