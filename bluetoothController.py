@@ -68,6 +68,7 @@ class BluetoothController:
                 if (data == "1"):
                     self.player_iface.Play()
                 elif (data == "0"):
+                    print("PAUSE")
                     self.player_iface.Pause()
                 elif (data == "3"):
                     self.player_iface.Next()
@@ -82,6 +83,7 @@ class BluetoothController:
                             "org.bluez.MediaTransport1",
                             "Volume",
                             dbus.UInt16(vol))
+            os.remove("status.txt")
         return True
 
     def play(self):
