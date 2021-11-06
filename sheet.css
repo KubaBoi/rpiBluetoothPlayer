@@ -8,12 +8,14 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(#de2551, #6625de);
+    background: linear-gradient(#de2551, #8d19da);
     width: 350px;
     height: 500px;
 }
 
 #control {
+    position: relative;
+    top: 5px;
     margin: auto;
     text-align: center;
 }
