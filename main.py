@@ -1,7 +1,7 @@
 #640 480
 
-from typing_extensions import runtime
 import pygame
+from test import BluetoothController
 
 pygame.init()
 
@@ -18,12 +18,14 @@ screen.fill((color))
 running = True
 
 while running:
-    
+
 
     pygame.display.flip()
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    bController = BluetoothController()
 
 pygame.quit()
