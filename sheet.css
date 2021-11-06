@@ -1,3 +1,9 @@
+#main {
+    background-color: chartreuse;
+    width: 300px;
+    height: 500px;
+}
+
 #prev {
     background-color: blue;
     width: 20px;

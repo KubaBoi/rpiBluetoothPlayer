@@ -3,14 +3,16 @@
     <link rel="stylesheet" href="sheet.css">
 </head>
 <body>
-    <div>
-        <button id="prev" onclick="prev()"></button>
-        <button id="play" onclick="play()"></button>
-        <button id="next" onclick="next()"></button>
+    <div id="main">
+        <div>
+            <button id="prev" onclick="prev()"></button>
+            <button id="play" onclick="play()"></button>
+            <button id="next" onclick="next()"></button>
+        </div>
+        <h1 id="title"></h1>
+        <h3 id="artist"></h3>
+        <h3 id="album"></h3>
     </div>
-    <h1 id="title"></h1>
-    <h3 id="artist"></h3>
-    <h3 id="album"></h3>
 
     <script>
         title = document.querySelector("#title");
