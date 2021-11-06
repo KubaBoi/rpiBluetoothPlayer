@@ -47,20 +47,18 @@ class BluetoothController:
             
             if prop == "Status":
                 self.data["Status"] = value
-                #print(f"Playback Status: {value}")
 
             elif prop == "Track":
-                #print("Music Info:")
                 self.data["Track"] = {}
                 for key in ("Title", "Artist", "Album"):
                     val = value.get(key, "")
                     self.data["Track"][key] = val
-                    #print(f"{key}: {val}")
 
         with open("data.json", "w") as f:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
+        print(self.player_iface.Position)
         if os.path.exists("status.txt"):
             with open("status.txt", "r") as f:
                 data = f.read()[0]
