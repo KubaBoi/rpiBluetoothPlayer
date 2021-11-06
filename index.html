@@ -4,10 +4,10 @@
 </head>
 <body>
     <div id="main">
-        <div>
-            <button id="prev" onclick="sendUpdate(2)"></button>
-            <button id="play" onclick="play()"></button>
-            <button id="next" onclick="sendUpdate(3)"></button>
+        <div id="control">
+            <button id="prev" class="prev" onclick="sendUpdate(2)"></button>
+            <button id="play" class="play1" onclick="play()"></button>
+            <button id="next" class="next" onclick="sendUpdate(3)"></button>
         </div>
         <h1 id="title"></h1>
         <h3 id="artist"></h3>
@@ -17,17 +17,15 @@
     <script>
         playing = false;
 
+        playButton = document.querySelector("#play");
+
         title = document.querySelector("#title");
         artist = document.querySelector("#artist");
         album = document.querySelector("#album");
 
         function play() {
-            if (playing) {
-                sendUpdate(0)
-            }
-            else {
-                sendUpdate(1)
-            }
+            if (playing) sendUpdate(0);
+            else sendUpdate(1);
         }
 
         setInterval(update, 1000);
@@ -36,15 +34,15 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     json = JSON.parse(this.responseText);
+                    console.log(json);
                     title.innerHTML = json.Track.Title;
                     artist.innerHTML = json.Track.Artist;
                     album.innerHTML = json.Track.Album;
-                    if (json.Status == "playing") {
-                        playing = true;
-                    } 
-                    else {
-                        playing = false;
-                    }
+                    
+                    if (json.Status == "playing") playing = true;
+                    else playing = false;
+
+                    documentUpdate();
                 }
             };
             xhttp.open("GET", "/update", true);
@@ -57,6 +55,15 @@
             xmlhttp.open("POST", theUrl);
             xmlhttp.setRequestHeader("Content-Type", "application/text;charset=UTF-8");
             xmlhttp.send(update);
+        }
+
+        function documentUpdate() {
+            if (playing) {
+                playButton.setAttribute("class", "play1");
+            }
+            else {
+                playButton.setAttribute("class", "play0");
+            }
         }
     </script>
 </body>
