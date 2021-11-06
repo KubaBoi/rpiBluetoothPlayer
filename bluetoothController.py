@@ -60,7 +60,7 @@ class BluetoothController:
     def on_playback_control(self, fd, condition):
 
         if os.path.exists("status.txt"):
-            print(self.player_iface.GetAll("Track"))
+            print(self.player_iface.GetAll("Position"))
             with open("status.txt", "r") as f:
                 data = f.read()[0]
                 print(data)
