@@ -29,7 +29,7 @@ class BluetoothController:
             if not self.transport_prop_iface:
                 print("Error: DBus.Properties iface not found.")
 
-        print(self.player_iface.GetAll("Track"))
+        print(self.player_iface.GetAll(signature="u"))
 
         bus.add_signal_receiver(
                 self.on_property_changed,
