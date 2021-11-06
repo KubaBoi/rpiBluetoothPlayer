@@ -51,8 +51,12 @@ class BluetoothController:
                 print("Music Info:")
                 self.data["Track"] = {}
                 for key in ("Title", "Artist", "Album"):
-                    self.data["Track"][key] = value.get(key, "")
-                    print(f"{key}: {value.get(key, '')}")
+                    val = value.get(key, "")
+                    if (key != "Title" and len(val) > 24):
+                        val = val[0:24] + "\n" + val[24:]
+
+                    self.data["Track"][key] = val
+                    print(f"{key}: {val}")
 
         with open("data.json", "w") as f:
             f.write(json.dumps(self.data))
