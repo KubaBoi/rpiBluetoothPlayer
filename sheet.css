@@ -10,7 +10,7 @@ body {
     top: 0;
     left: 0;
     background: linear-gradient(#de2551, #8d19da);
-    width: 310px;
+    width: 320px;
     height: 480px;
 }
 
@@ -47,7 +47,7 @@ button:active {
 
 #playDiv {
     position: absolute;
-    left: 100px;
+    left: 110px;
     width: 100px;
     height: 100px;
 }
@@ -55,7 +55,7 @@ button:active {
 #nextDiv {
     position: absolute;
     top: 25px;
-    left: 220px;
+    left: 235px;
     width: 50px;
     height: 50px;
 }
