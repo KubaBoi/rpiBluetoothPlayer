@@ -58,7 +58,8 @@ class BluetoothController:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
-        print(self.player_iface.Track())
+        print(self.player_iface.Track)
+        print(self.transport_prop_iface.Track)
         if os.path.exists("status.txt"):
             with open("status.txt", "r") as f:
                 data = f.read()[0]
