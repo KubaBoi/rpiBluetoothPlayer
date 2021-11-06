@@ -20,6 +20,7 @@
                     title.innerHTML = json.title;
                     artist.innerHTML = json.artist;
                     album.innerHTML = json.album;
+                    title.innerHTML = this.responseText;
                 }
             };
             xhttp.open("GET", "/update", true);
