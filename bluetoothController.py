@@ -44,7 +44,7 @@ class BluetoothController:
             
             if prop == "Status":
                 self.data["Status"] = value
-                print(f"Playback Status: {str(value)}")
+                print("Playback Status: {}".format(value))
 
             elif prop == "Track":
                 print("Music Info:")
