@@ -207,17 +207,13 @@ class BluePlayer(dbus.service.Object):
 
 
     def play(self):
-        manager = dbus.Interface(self.bus.get_object("org.bluez", "/"), "org.freedesktop.DBus.ObjectManager")
-        manager.Play()
+        self.player.Play()
 
     def pause(self):
-        manager = dbus.Interface(self.bus.get_object("org.bluez", "/"), "org.freedesktop.DBus.ObjectManager")
-        manager.Pause()
+        self.player.Pause()
 
     def next(self):
-        manager = dbus.Interface(self.bus.get_object("org.bluez", "/"), "org.freedesktop.DBus.ObjectManager")
-        manager.Next()
+        self.player.Next()
 
     def prev(self):
-        manager = dbus.Interface(self.bus.get_object("org.bluez", "/"), "org.freedesktop.DBus.ObjectManager")
-        manager.Previous()
+        self.player.Previous()
