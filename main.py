@@ -22,7 +22,8 @@ time.sleep(10)
 pyautogui.press("F11")
 
 while True:
-    if os.path.exists("status.txt"):
+    pass
+    """if os.path.exists("status.txt"):
         with open("status.txt", "r") as f:
             data = f.read()
             if (data == "0"):
@@ -34,4 +35,4 @@ while True:
             elif (data == "3"):
                 bController.next()
 
-        os.remove("status.txt")
+        os.remove("status.txt")"""
