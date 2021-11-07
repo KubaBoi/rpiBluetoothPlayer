@@ -2,7 +2,7 @@ from http.server import HTTPServer
 import threading
 import webbrowser
 import time
-import os
+import pyautogui
 
 from bluetoothController import BluetoothController
 from server import Server
@@ -16,7 +16,6 @@ thread2 = threading.Thread(target=server.serve_forever, args=())
 thread2.start()
 
 time.sleep(1)
-import pyautogui
 pyautogui.press("Enter")
 webbrowser.open("http://localhost:8000")
 time.sleep(10)
