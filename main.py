@@ -15,6 +15,7 @@ server = HTTPServer(("localhost", 8000), Server)
 thread2 = threading.Thread(target=server.serve_forever, args=())
 thread2.start()
 
+time.sleep(1)
 import pyautogui
 pyautogui.press("Enter")
 webbrowser.open("http://localhost:8000")
