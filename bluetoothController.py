@@ -8,7 +8,7 @@ class BluetoothController:
     def __init__(self):
         self.data = {}
 
-    def serverForever(self):
+    def serveForever(self):
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
         bus = dbus.SystemBus()
         obj = bus.get_object("org.bluez", "/")
