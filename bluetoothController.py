@@ -3,6 +3,8 @@ from gi.repository import GLib
 import json
 import os
 
+from path import Path
+
 class BluetoothController:
 
     def __init__(self):
@@ -61,8 +63,10 @@ class BluetoothController:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
-        if os.path.exists(f"{os.getcwd()}/status.txt"):
-            with open(f"{os.getcwd()}/status.txt", "r") as f:
+        path = Path()
+
+        if os.path.exists(f"{path.getPath()}status.txt"):
+            with open(f"{path.getPath()}status.txt", "r") as f:
                 data = f.read()[0]
                 print(data)
                 if (data == "1"):
@@ -83,7 +87,7 @@ class BluetoothController:
                             "org.bluez.MediaTransport1",
                             "Volume",
                             dbus.UInt16(vol))
-            os.remove(f"{os.getcwd()}/status.txt")
+            os.remove(f"{path.getPath()}status.txt")
         return True
 
     def play(self):
