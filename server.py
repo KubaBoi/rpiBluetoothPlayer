@@ -23,18 +23,18 @@ class Server(BaseHTTPRequestHandler):
         if (self.path == "/sendUpdate"):
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
-            path = Path()
-            with open(f"{path.getPath()}status.txt", "bw") as f:
+            pth = Path()
+            with open(f"{pth.getPath()}status.txt", "bw") as f:
                 f.write(post_body) 
             self.send_response(200)
 
     def sendFile(self, file, header = "text/html"):
-        path = Path()
-        if (not path.exists(f"{path.getPath()}{file}")):
+        pth = Path()
+        if (not path.exists(f"{pth.getPath()}{file}")):
             self.send_response(404)
             self.send_header("Content-type", "text/html")
             self.end_headers()
-            f = f"{path.getPath()}{file}"
+            f = f"{pth.getPath()}{file}"
             self.wfile.write(b":(" + f.encode("utf-8"))
             return
 
@@ -42,7 +42,7 @@ class Server(BaseHTTPRequestHandler):
         self.send_header("Content-type", header)
         self.end_headers()
 
-        with open(f"{path.getPath()}{file}", "rb") as f:
+        with open(f"{pth.getPath()}{file}", "rb") as f:
             self.wfile.write(f.read())
 
     def update(self):
@@ -50,7 +50,8 @@ class Server(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/json")
         self.end_headers()
 
-        with open(f"{path.getPath()}data.json", "rb") as f:
+        pth = Path()
+        with open(f"{pth.getPath()}data.json", "rb") as f:
             self.wfile.write(f.read())
 
 
