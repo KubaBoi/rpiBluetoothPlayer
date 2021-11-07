@@ -21,23 +21,23 @@ class Server(BaseHTTPRequestHandler):
         if (self.path == "/sendUpdate"):
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
-            with open(f"{os.getcwd()}/status.txt", "bw") as f:
+            with open(f"{os.getcwd()}/rpiBluetoothPlayer/status.txt", "bw") as f:
                 f.write(post_body) 
             self.send_response(200)
 
     def sendFile(self, file, header = "text/html"):
-        if (not path.exists(f"{os.getcwd()}/{file}")):
+        if (not path.exists(f"{os.getcwd()}/rpiBluetoothPlayer/{file}")):
             self.send_response(404)
             self.send_header("Content-type", "text/html")
             self.end_headers()
-            self.wfile.write(b":(" + os.getcwd().encode("utf-8"))
+            self.wfile.write(b":(")
             return
 
         self.send_response(200)
         self.send_header("Content-type", header)
         self.end_headers()
 
-        with open(f"{os.getcwd()}/{file}", "rb") as f:
+        with open(f"{os.getcwd()}/rpiBluetoothPlayer/{file}", "rb") as f:
             self.wfile.write(f.read())
 
     def update(self):
@@ -45,7 +45,7 @@ class Server(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/json")
         self.end_headers()
 
-        with open(f"{os.getcwd()}/data.json", "rb") as f:
+        with open(f"{os.getcwd()}/rpiBluetoothPlayer/data.json", "rb") as f:
             self.wfile.write(f.read())
 
 
