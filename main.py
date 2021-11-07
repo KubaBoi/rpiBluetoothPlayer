@@ -24,16 +24,3 @@ pyautogui.press("F11")
 
 while True:
     pass
-    """if os.path.exists("status.txt"):
-        with open("status.txt", "r") as f:
-            data = f.read()
-            if (data == "0"):
-                bController.pause()
-            elif (data == "1"):
-                bController.play()
-            elif (data == "2"):
-                bController.prev()
-            elif (data == "3"):
-                bController.next()
-
-        os.remove("status.txt")"""
