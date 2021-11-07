@@ -62,8 +62,8 @@ class BluetoothController:
             f.write(json.dumps(self.data))
 
     def on_playback_control(self, fd, condition):
-        if os.path.exists("status.txt"):
-            with open("status.txt", "r") as f:
+        if os.path.exists(f"{os.getcwd()}/status.txt"):
+            with open(f"{os.getcwd()}/status.txt", "r") as f:
                 data = f.read()[0]
                 print(data)
                 if (data == "1"):
@@ -84,7 +84,7 @@ class BluetoothController:
                             "org.bluez.MediaTransport1",
                             "Volume",
                             dbus.UInt16(vol))
-            os.remove("status.txt")
+            os.remove(f"{os.getcwd()}/status.txt")
         return True
 
     def play(self):

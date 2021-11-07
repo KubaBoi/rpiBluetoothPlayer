@@ -3,12 +3,9 @@ import threading
 import webbrowser
 import time
 import pyautogui
-import os
 
 from bluetoothController import BluetoothController
 from server import Server
-
-print(os.getcwd())
 
 bController = BluetoothController()
 thread = threading.Thread(target=bController.serveForever, args=())

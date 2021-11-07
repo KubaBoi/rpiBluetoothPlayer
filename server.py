@@ -2,6 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 from os import path
 import json
+import os
 
 hostName = "localhost"
 hostPort = 8000
@@ -20,12 +21,12 @@ class Server(BaseHTTPRequestHandler):
         if (self.path == "/sendUpdate"):
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len)
-            with open("status.txt", "bw") as f:
+            with open(f"{os.getcwd()}/status.txt", "bw") as f:
                 f.write(post_body) 
             self.send_response(200)
 
     def sendFile(self, file, header = "text/html"):
-        if (not path.exists(file)):
+        if (not path.exists(f"{os.getcwd()}/{file}")):
             self.send_response(404)
             self.send_header("Content-type", "text/html")
             self.end_headers()
@@ -36,7 +37,7 @@ class Server(BaseHTTPRequestHandler):
         self.send_header("Content-type", header)
         self.end_headers()
 
-        with open(file, "rb") as f:
+        with open(f"{os.getcwd()}/{file}", "rb") as f:
             self.wfile.write(f.read())
 
     def update(self):
@@ -44,7 +45,7 @@ class Server(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/json")
         self.end_headers()
 
-        with open("data.json", "rb") as f:
+        with open(f"{os.getcwd()}/data.json", "rb") as f:
             self.wfile.write(f.read())
 
 
